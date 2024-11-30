@@ -33,11 +33,11 @@ optimize:
 	$(VOPT) -work $(BUILD_DIR) $(TARGET) -o $(TARGET)_opt
 
 # Run the simulation
-simu:
+sim:
 	$(VSIM) -voptargs="+acc" -c $(BUILD_DIR).$(TARGET) -do "run -all; quit"
 
 guisim:
-	$(VSIM) -voptargs="+acc" $(BUILD_DIR).$(TARGET) -do "run -all; quit"
+	$(VSIM) -voptargs="+acc" $(BUILD_DIR).$(TARGET)
 
 # Clean the build files
 clean:

@@ -1,6 +1,6 @@
 //Processing Element
 module pe(
-    input clk, rst,
+    input clk, rst,en_result_reg,
     input [7:0] a,
     input [7:0] b,
 
@@ -14,15 +14,15 @@ module pe(
     logic [15:0] product_ab;
     logic [31:0] acc_sum;
 
-    // logic [7:0] propagate_a;
-    // logic [7:0] propagate_b;
 
     always_ff @(posedge clk) begin
         if(rst) begin
             result_reg <= 0;
         end
         else begin
-            result_reg <= acc_sum;
+            if(en_result_reg) begin
+                result_reg <= acc_sum;
+            end
             a_out <= a;
             b_out <= b;
         end
